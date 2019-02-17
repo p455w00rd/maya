@@ -12,9 +12,12 @@ include 'header.php';
 		<form action="kegiatan_edit_klik.php" method="post">
 			<?php
 			$id=$_GET['id'];
-			$kegiatan=mysqli_query($koneksi,"SELECT * FROM kegiatan WHERE id_kegiatan='$id'");
-			while ($k=mysqli_fetch_array($kegiatan)){
 
+			$kegiatan=mysqli_query($koneksi,"SELECT * FROM kegiatan WHERE id_kegiatan=$id");
+			while ($k=mysqli_fetch_array($kegiatan)){
+//            echo $_SESSION['admin'];
+//            echo $k['id_pj'];
+//            echo $id;
 			?>
 			
 			
@@ -40,7 +43,7 @@ include 'header.php';
 				$pj=mysqli_query($koneksi,"SELECT * FROM pj");
 				while ($p=mysqli_fetch_array($pj)){
 					?>
-				<option value="<?php echo $p['id_pj'];?>"><?php echo $p['nama_pj'];?></option>
+				<option <?php echo $p['id_pj'] == $k['id_pj']? 'selected' : '' ?> value="<?php echo $p['id_pj'];?>"><?php echo $p['nama_pj'];?></option>
 				<?php
 				}
 				?>

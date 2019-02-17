@@ -6,6 +6,7 @@ include 'header.php';
 	<div class="card-body">
 	
 		<h2> DATA KEGIATAN </h2>
+
 		<p class="text-muted">Daftar Nama Kegiatan Pondok Pesantren Nurul Islam</p>
 		<hr>
 		<a  class="btn btn-primary btn-sm" href="kegiatan_tambah.php">Tambah Kegiatan </a>
@@ -21,7 +22,7 @@ include 'header.php';
 	</tr>
 	<?php
 	$no=1;
-$kegiatan = mysqli_query($koneksi,"SELECT * FROM kegiatan");
+$kegiatan = mysqli_query($koneksi,"SELECT kegiatan.id_kegiatan,kegiatan.nama_kegiatan,kegiatan.jenis_kegiatan,kegiatan.tgl,pj.nama_pj FROM kegiatan LEFT JOIN pj ON kegiatan.id_pj = pj.id_pj");
 while ($s = mysqli_fetch_array($kegiatan)) {
 	?>
 	<tr>
@@ -29,7 +30,7 @@ while ($s = mysqli_fetch_array($kegiatan)) {
 	<td><?php echo $s['nama_kegiatan']; ?></td>
 	<td><?php echo $s['jenis_kegiatan']; ?></td>
 	<td><?php echo $s['tgl']; ?></td>
-	<td><?php echo $s['id_pj']; ?></td>
+	<td><?php echo $s['nama_pj']; ?></td>
 	
 	<td>
 	<a href="kegiatan_edit.php?id= <?php echo $s['id_kegiatan'];?>" class='btn btn-primary btn-sm' >Edit</a>

@@ -21,6 +21,7 @@ include'../koneksi.php';
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+        <?php if($_SESSION['admin']==0){ ?>
       <li class="nav-item active">
         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
       </li>
@@ -53,6 +54,16 @@ include'../koneksi.php';
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li>
+        <?php }
+        else{
+        ?>
+        <li class="nav-item">
+            <a class="nav-link" href="prestasi.php">PRESTASI</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="pelanggaran.php">PELANGGARAN</a>
+        </li>
+        <?php } ?>
       <li class="nav-item">
         <a class="nav-link" href="logout.php" tabindex="-1" >LOGOUT</a>
       </li>
